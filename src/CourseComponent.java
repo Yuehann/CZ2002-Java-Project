@@ -1,5 +1,5 @@
 
-public class courseComponent {
+public class CourseComponent {
     
 	private Boolean lec;
 	private Boolean tut;
@@ -7,11 +7,11 @@ public class courseComponent {
 	
 /*-------------------------constructor---------------------------- */	
 	// Creates a new courseComponent without specified attributes
-	public courseComponent() {
+	public CourseComponent() {
 		
 	}
 	// Create a new courseComponent with given lec, tut, lab information
-	public courseComponent(Boolean lec, Boolean tut, Boolean lab) {
+	public CourseComponent(Boolean lec, Boolean tut, Boolean lab) {
 		this.lec = lec;
 		this.tut = tut;
 		this.lab = lab;

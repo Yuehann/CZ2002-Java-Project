@@ -1,5 +1,5 @@
 
-public class courseStructure {
+public class CourseStructure {
 
 	private double finalExam;
 	private double quiz;
@@ -9,11 +9,11 @@ public class courseStructure {
 	
 /*-------------------------constructor---------------------------- */
 	// Creates a new courseStructure without specified attributes
-	public courseStructure() {
+	public CourseStructure() {
 		
 	}
 	// Create a new courseStructure given weight of finalExam, quiz, assignment, project, participation
-	public courseStructure(double finalExam, double quiz, double assignment, double project, double participation) {
+	public CourseStructure(double finalExam, double quiz, double assignment, double project, double participation) {
 		this.finalExam=finalExam;
 		this.quiz=quiz;
 		this.assignment=assignment;

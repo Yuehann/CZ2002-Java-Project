@@ -5,24 +5,22 @@ public class Course {
 	private String courseName;
 	private Integer AUCredits;
 	private String school;
-	private String courseType;
 	private ArrayList<Integer> indexGroupList;  //????indexGroupClass,<indexGroup>,contain vacancy, Students?????//
 	
-	private courseStructure structure;  // uni-directional
-	private courseComponent component;  // uni-directional
-	private Prof professors;
+	private CourseStructure structure;  // uni-directional
+	private CourseComponent component;  // uni-directional
+	private String coordinator;
 /*-------------------------constructor---------------------------- */	
 	// Creates a new Course without specified attributes
 	public Course(){
 		
 	}
 	// Creates a new Course with given ID, name, AU, waitList of index group, structure, component
-	public Course(String courseID, String courseName, Integer AUcredits, String school, String courseType, ArrayList<Integer> indexGroupList, courseStructure sturcture, courseComponent component) {
+	public Course(String courseID, String courseName, Integer AUcredits, String school, ArrayList<Integer> indexGroupList, CourseStructure sturcture, CourseComponent component) {
 		this.courseID=courseID;
 		this.courseName = courseName;
 		this.AUCredits = AUCredits;
 		this.school = school;
-		this.courseType = courseType;
 		this.indexGroupList = indexGroupList;
 		this.structure = structure;
 		this.component = component;
@@ -63,15 +61,6 @@ public class Course {
 	public void setSchool(String school) {
 		this.school=school;
 	}
-/*------------------------------------------------------------------ */	
-	// Get type of the course
-	public String getCourseType() {
-		return this.courseType;
-	}
-	// Change type of the course
-	public void setCourseType(String courseType) {
-		this.courseType=courseType;
-	}
 /*------------------------------------------------------------------ */
 	// Get the ArrayList of indexGroup's IDs of the course
 	public ArrayList<Integer> getIndexGroupList(){
@@ -95,28 +84,27 @@ public class Course {
 	}
 /*------------------------------------------------------------------ */	
 	// Get the course assessment structure
-	public courseStructure getCourseStructure() {
+	public CourseStructure getCourseStructure() {
 		return this.structure;
 	}
 	// Change the course assessment structure
-	public void setCourseStructure(courseStructure structure) {
+	public void setCourseStructure(CourseStructure structure) {
 		this.structure=structure;
 	}
 /*------------------------------------------------------------------ */	
 	// Get the component of the course(Lecture/Tutorial/Lab)
-	public courseComponent getCourseComponent() {
+	public CourseComponent getCourseComponent() {
 		return this.component;
 	}
 	// Change the component of the course(Lecture/Tutorial/Lab)
-	public void setCourseComponent(courseComponent component) {
+	public void setCourseComponent(CourseComponent component) {
 		this.component=component;
 	}
 /*------------------------------------------------------------------ */
-	public void viewCourseInfo(Integer AUCredits,courseStructure structure, courseComponent component) {
+	public void viewCourseInfo(Integer AUCredits,CourseStructure structure, CourseComponent component) {
 		System.out.println("Course code: " + this.courseID);
 		System.out.println("Course name: " + this.courseName);
 		System.out.println("AU Credits: " + AUCredits);
-		System.out.println("Course type: " + this.courseType);
 		System.out.println("School of course: " + this.school);
 		viewIndexGroupList();	
 		structure.viewCourseStructure();

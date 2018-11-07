@@ -4,8 +4,11 @@ public class CourseIndex {
 	private Integer index;
 	private String courseId;
 	private Integer vacancy;
-	private Integer waitlist;
+	private ArrayList<String> waitlist;
 	private ArrayList<String> studentList;
+	
+	private String tutor;
+	private String labTutor;
 	
 /*-------------------------constructor---------------------------- */	
 // Creates a new CourseIndex without specified attributes
@@ -13,7 +16,7 @@ public class CourseIndex {
 		
 	}
 // Create a new CourseIndex with index, courseId, vacancy, waitlist, studentList passed in
-	public CourseIndex(Integer index, String courseId, Integer vacancy, Integer waitlist, 
+	public CourseIndex(Integer index, String courseId, Integer vacancy, ArrayList<String> waitlist, 
 			ArrayList<String> studentList) {
 		this.index = index;
 		this.courseId = courseId;
@@ -44,10 +47,10 @@ public class CourseIndex {
 		this.vacancy = vacancy;
 	}
 // Get and set waitlist
-	public Integer getWaitalsit() {
+	public ArrayList<String> getWaitalsit() {
 		return this.waitlist;
 	}
-	public void setWaitlsit(Integer waitlsit) {
+	public void setWaitlsit(ArrayList<String> waitlsit) {
 		this.waitlist = waitlsit;
 	}
 // Get and set studentList

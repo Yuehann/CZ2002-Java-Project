@@ -8,9 +8,6 @@ public class Course {
 	private String courseType;
 	private ArrayList<Integer> indexGroupList;  //????indexGroupClass,<indexGroup>,contain vacancy, Students?????//
 	
-	private Integer vacancy; ///???????
-	private ArrayList<Students> studentList; //???????
-	
 	private courseStructure structure;  // uni-directional
 	private courseComponent component;  // uni-directional
 	private Prof professors;

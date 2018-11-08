@@ -1,6 +1,8 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
+// ---------->  All kinds of checks, use EXEPTION ??????????????
+
 public class UserInterface {
 	
 //	public static int stuNo;   Need this for adding file or not?
@@ -29,9 +31,9 @@ public class UserInterface {
 		    choice = sc.nextInt();
 		
 		    switch(choice) {
-// Case 1: Add a student 
+// Case 1: Add a student ======================================================================================================= 
 		    case 1:
-		    	System.out.printf("\nAdd a student\n");
+		    	System.out.printf("\n< Add a student >\n");
 		    	System.out.printf("\nPlease enter the student information \n");
 		    	System.out.printf("  Student ID: ");
 			    String studentId_add = sc.next();
@@ -59,15 +61,15 @@ public class UserInterface {
 			    else
 			    	System.out.printf("Adding student failed, please check the information and try again.");
 			    break;
-// Case 2: Add a course 
+// Case 2: Add a course ========================================================================================================
 		    case 2:
-		    	System.out.printf("\nAdd a course\n");
+		    	System.out.printf("\n< Add a course >\n");
 		    	System.out.printf("\nPlease enter the course information \n");
 		    	// The same implementation as case 1 -- add a student ?
 		    	break;
-// Case 3: Register student for a course (include registering for Tutorial/Lab) 
+// Case 3: Register student for a course (include registering for Tutorial/Lab) ================================================
 		    case 3:
-		    	System.out.printf("\nRegister student for a course (include registering for Tutorial/Lab)\n");
+		    	System.out.printf("\n< Register student for a course (include registering for Tutorial/Lab) >\n");
 		    	System.out.printf("\nStudent ID:");
 			    String studentId_regi = sc.next();
 			    System.out.printf("Course ID:");
@@ -80,9 +82,9 @@ public class UserInterface {
 				    System.out.printf("Registration failed, "+
 			                          "please check the information and try again.\n");
 			    break;
-// Case 4: Check available slot in a class (vacancy in a class)	
+// Case 4: Check available slot in a class (vacancy in a class)	================================================================
 		    case 4:
-		    	System.out.printf("\nCheck available slot in a class (vacancy in a class)\n");
+		    	System.out.printf("\n< Check available slot in a class (vacancy in a class) >\n");
 		    	System.out.printf("Course Index:");
 			    Integer index_vacy = sc.nextInt();
 			    Integer vacancy = checkVacancyAvailable(index_vacy);
@@ -92,9 +94,9 @@ public class UserInterface {
 			    else
 			    	System.out.println("There currently is no vacancy available for course index "+index_vacy+".");
 			    break;
-// Case 5: Print student list by lecture, tutorial or laboratory session for a course 
+// Case 5: Print student list by lecture, tutorial or laboratory session for a course ==========================================
 		    case 5:
-		    	System.out.printf("\nPrint student list by lecture, tutorial or laboratory session for a course\n");
+		    	System.out.printf("\n< Print student list by lecture, tutorial or laboratory session for a course >\n");
                 System.out.printf("\nPlease select printing student list by which session:\n"+
 		    	                  "a. lecture session\n" + "b. tutorial/lab session\n"+"\nYour choice is: ");
                 char choice_print = sc.next().charAt(0);
@@ -115,27 +117,46 @@ public class UserInterface {
 		    	}
 		  
 		    	break;
-// Case 6: Enter course assessment components weightage 
+// Case 6: Enter course assessment components weightage ========================================================================
 		    case 6:
-		    	
+		    	System.out.printf("\n< Enter course assessment components weightage >\n");
+		    	System.out.printf("\nPlease enter course assessment component weightage:\n");
+		    	System.out.printf("  Final Exam Weightage: ");
+		    	double finalExam_entr = sc.nextDouble();
+		    	System.out.printf("  Quiz Exam Weightage: ");
+		    	double quiz_entr = sc.nextDouble();
+		    	System.out.printf("  Assignment Weightage: ");
+		    	double assignment_entr = sc.nextDouble();
+		    	System.out.printf("  Project Weightage: ");
+		    	double project_entr = sc.nextDouble();
+		    	System.out.printf("  Participation Weightage: ");
+		    	double participation_entr = sc.nextDouble();
+		    	boolean entered = enterCompoWeightage(finalExam_entr, quiz_entr, assignment_entr, 
+		    			project_entr, participation_entr);
+		    	if(entered)
+		    		System.out.println("The course assessment components weightage are successfully entered!"+
+		    	                       "\n  Final Exam: "+finalExam_entr+"\n  Quiz: "+quiz_entr+"\n  Assignment: "+assignment_entr+
+		    	                       "\n  Project: "+project_entr+"\n  Participation: "+participation_entr);
+		    	else
+		    		System.out.println("The entering failed, please check the information and try again.");
 		    	break;
-// Case 7: Enter coursework mark - inclusive of its components 
+// Case 7: Enter coursework mark - inclusive of its components =================================================================
 		    case 7:
 		    	
 		    	break;
-// Case 8: Enter exam mark 
+// Case 8: Enter exam mark =====================================================================================================
 		    case 8:
 		    	
 		    	break;
-// Case 9: Print course statistics 
+// Case 9: Print course statistics =============================================================================================
 		    case 9:
 		    	
 		    	break;
-// Case 10: Print student transcript 
+// Case 10: Print student transcript =========================================================================================== 
 		    case 10:
 		    	
 		    	break;
-// Case EXIT & DEFAULT 
+// Case EXIT & DEFAULT =========================================================================================================
 		    case -1:
 		    	break;
 		    default:
@@ -215,12 +236,22 @@ public class UserInterface {
 	
 	
 //  Case 6: Enter course assessment components weightage
-	public static void enterCompoWeightage() {
+	public static boolean enterCompoWeightage(double finalExam_entr, double quiz_entr, double assignment_entr, 
+			double project_entr, double participation_entr) {
+		
+		// LOOP: (while (true) ?)                        
+		// do a check of whether all entering added == 1 (100%)
+		// if == 1 ->
+		// create a CourseStructure object, set all attributes
+		// store the new object to the file Course->CourseComponent ??  -> EXIT LOOP
+		// else ->  prompts to reenter ?? () -> keep on LOOP ?
+		return true;
 		
 	}
 	
 	
 //  Case 7: Enter coursework mark - inclusive of its components
+	
 //  Case 8: Enter exam mark
 //  Case 9: Print course statistics
 //  Case 10: Print student transcript

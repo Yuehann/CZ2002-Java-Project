@@ -29,7 +29,7 @@ public class UserInterface {
 		    choice = sc.nextInt();
 		
 		    switch(choice) {
-// Case 1: Add a student -------------------------------------------------------------------------------------
+// Case 1: Add a student 
 		    case 1:
 		    	System.out.printf("\nAdd a student - Please enter the student information \n");
 		    	System.out.printf("  Student ID: ");
@@ -58,7 +58,11 @@ public class UserInterface {
 			    else
 			    	System.out.printf("Adding student failed, please check the information and try again.");
 			    break;
-// Case 3: Register student for a course (include registering for Tutorial/Lab) ------------------------------
+// Case 2: Add a course 
+		    case 2:
+		    	// The same implementation as case 1 -- add a student ?
+		    	break;
+// Case 3: Register student for a course (include registering for Tutorial/Lab) 
 		    case 3:
 		    	System.out.printf("Student ID:");
 			    String studentId_regi = sc.next();
@@ -72,7 +76,7 @@ public class UserInterface {
 				    System.out.printf("Registration failed, "+
 			                          "please check the information and try again.\n");
 			    break;
-// Case 4: Check available slot in a class (vacancy in a class)	----------------------------------------------		    
+// Case 4: Check available slot in a class (vacancy in a class)	
 		    case 4:
 		    	System.out.printf("Course Index:");
 			    Integer index_vacy = sc.nextInt();
@@ -83,7 +87,31 @@ public class UserInterface {
 			    else
 			    	System.out.println("There currently is no vacancy available for course index "+index_vacy+".");
 			    break;
-// Case EXIT & DEFAULT ---------------------------------------------------------------------------------------
+// Case 5: Print student list by lecture, tutorial or laboratory session for a course 
+		    case 5:
+		    	
+		    	break;
+// Case 6: Enter course assessment components weightage 
+		    case 6:
+		    	
+		    	break;
+// Case 7: Enter coursework mark - inclusive of its components 
+		    case 7:
+		    	
+		    	break;
+// Case 8: Enter exam mark 
+		    case 8:
+		    	
+		    	break;
+// Case 9: Print course statistics 
+		    case 9:
+		    	
+		    	break;
+// Case 10: Print student transcript 
+		    case 10:
+		    	
+		    	break;
+// Case EXIT & DEFAULT 
 		    case -1:
 		    	break;
 		    default:
@@ -95,26 +123,30 @@ public class UserInterface {
 	}
 
 /*----------------------------------------- UserInterface Methods ---------------------------------------------*/
-	
+//  Case 1: Add a student 
 	public static boolean addStudents(String studentId_add, String studentName_add, char gender_add, String nationality_add, 
 			String school_add, Integer year_add, ArrayList<Integer> indexList_add) {
 		
-		// Create a new student object?? then add into file student?? 
+		// Create a new student object?? then add into file Students?? 
  
 		return true;
 	}
 	
 	
-	public static Integer checkVacancyAvailable(Integer index_vacy) {
+//  Case 2: Add a course	
+	public static boolean addCourse(String courseID, String courseName, Integer AUCredits, String school, ArrayList<Integer> indexGroupList, 
+			CourseStructure structure, CourseComponent component) {
 		
+		// Create a new course object?? then add into file Course??
 		
-		return 0;
+		return true;
 	}
 	
 	
+//	Case 3: Register student for a course (include registering for Tutorial/Lab)
 	public static boolean regiStuToCou(String studentId_regi, String courseId_regi) {
 		
-		// search to get the course object by courseId
+		// search to get the Course object by courseId
 		// System.out.println()...all indexGroupList for this course object
 		// DO WHILE LOOP:(true?)
 		// Prompts Admin to input an index wanted
@@ -128,5 +160,39 @@ public class UserInterface {
 		
 		return true;
 	}
+	
+	
+//  Case 4: Check available slot in a class (vacancy in a class)
+	public static Integer checkVacancyAvailable(Integer index_vacy) {
+		
+		// search to get the CourseIndex object by index_vacy
+		// object.getVacancy() return the vacancy available in that class
+		
+		return 0;
+	}
+	
+	
+//  Case 5: Print student list by lecture, tutorial or laboratory session for a course
+	public static void printStuListByLec() {
+		
+		
+		
+	}
+	
+	public static void printStuListByTutLab() {
+		
+	}
+	
+	
+//  Case 6: Enter course assessment components weightage
+	public static void enterCompoWeightage() {
+		
+	}
+	
+	
+//  Case 7: Enter coursework mark - inclusive of its components
+//  Case 8: Enter exam mark
+//  Case 9: Print course statistics
+//  Case 10: Print student transcript
 }
 

@@ -31,7 +31,8 @@ public class UserInterface {
 		    switch(choice) {
 // Case 1: Add a student 
 		    case 1:
-		    	System.out.printf("\nAdd a student - Please enter the student information \n");
+		    	System.out.printf("\nAdd a student\n");
+		    	System.out.printf("\nPlease enter the student information \n");
 		    	System.out.printf("  Student ID: ");
 			    String studentId_add = sc.next();
 			    System.out.printf("  Student Name: ");
@@ -60,11 +61,14 @@ public class UserInterface {
 			    break;
 // Case 2: Add a course 
 		    case 2:
+		    	System.out.printf("\nAdd a course\n");
+		    	System.out.printf("\nPlease enter the course information \n");
 		    	// The same implementation as case 1 -- add a student ?
 		    	break;
 // Case 3: Register student for a course (include registering for Tutorial/Lab) 
 		    case 3:
-		    	System.out.printf("Student ID:");
+		    	System.out.printf("\nRegister student for a course (include registering for Tutorial/Lab)\n");
+		    	System.out.printf("\nStudent ID:");
 			    String studentId_regi = sc.next();
 			    System.out.printf("Course ID:");
 			    String courseId_regi = sc.next();
@@ -78,6 +82,7 @@ public class UserInterface {
 			    break;
 // Case 4: Check available slot in a class (vacancy in a class)	
 		    case 4:
+		    	System.out.printf("\nCheck available slot in a class (vacancy in a class)\n");
 		    	System.out.printf("Course Index:");
 			    Integer index_vacy = sc.nextInt();
 			    Integer vacancy = checkVacancyAvailable(index_vacy);
@@ -89,7 +94,26 @@ public class UserInterface {
 			    break;
 // Case 5: Print student list by lecture, tutorial or laboratory session for a course 
 		    case 5:
+		    	System.out.printf("\nPrint student list by lecture, tutorial or laboratory session for a course\n");
+                System.out.printf("\nPlease select printing student list by which session:\n"+
+		    	                  "a. lecture session\n" + "b. tutorial/lab session\n"+"\nYour choice is: ");
+                char choice_print = sc.next().charAt(0);
 		    	
+                switch(choice_print) {
+		    	case 'a':
+			    	System.out.printf("Please enter the Course ID for printing the Student List by lecture session: ");
+			    	String courseId_prinStuList = sc.next();
+			    	printStuListByLec(courseId_prinStuList);
+			    	break;
+		    	case 'b':
+		    		System.out.printf("Please enter the Course Index for printing the Student List by tutorial/lab session: ");
+		    		Integer index_prinStuList = sc.nextInt();
+		    		printStuListByTutLab(index_prinStuList);
+		    		break;
+		    	default:
+		    		break;
+		    	}
+		  
 		    	break;
 // Case 6: Enter course assessment components weightage 
 		    case 6:

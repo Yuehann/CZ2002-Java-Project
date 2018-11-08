@@ -1,4 +1,4 @@
-package DbOperations;
+
 import java.io.*;
 import java.util.*;
 
@@ -16,7 +16,7 @@ public class DbWriter {
 		String temp_all;
 		String temp_structure;
 		String temp_components;
-		temp_all=c.getCourseID()+ " "+ c.getCourseName()+" "+ c.getAUcredits()+" "+ c.getSchool()+ " "+ c.getCourseType();
+		temp_all=c.getCourseID()+ " "+ c.getCourseName()+" "+ c.getAUcredits()+" "+ c.getSchool();
 //		temp_structure=c.getCourseStructure().getWeightOfFinal()+"|"+c.getCourseStructure().getWeightOfQuiz()+"|"+
 //				c.getCourseStructure().getWeightOfAssignment()+"|"+c.getCourseStructure().getWeightOfProject()+"|"+c.getCourseStructure().getWeightOfParticipation();
 //		temp_components=String.valueOf(c.getCourseComponent().hasLec())+"|"+String.valueOf(c.getCourseComponent().hasTut())+"|"+String.valueOf(c.getCourseComponent().hasLab());

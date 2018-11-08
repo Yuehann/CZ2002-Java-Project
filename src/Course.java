@@ -16,7 +16,8 @@ public class Course {
 		
 	}
 	// Creates a new Course with given ID, name, AU, waitList of index group, structure, component
-	public Course(String courseID, String courseName, Integer AUcredits, String school, ArrayList<Integer> indexGroupList, CourseStructure sturcture, CourseComponent component) {
+	public Course(String courseID, String courseName, Integer AUCredits, String school, ArrayList<Integer> indexGroupList, 
+			CourseStructure structure, CourseComponent component) {
 		this.courseID=courseID;
 		this.courseName = courseName;
 		this.AUCredits = AUCredits;

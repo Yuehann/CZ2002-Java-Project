@@ -197,10 +197,10 @@ public class UserInterface {
 		// Prompts Admin to input an index wanted
 		// checkVacancyAvailable(index) -> tell whether can register or not
 		// get the index object by searching db
-		// if (has vacancy) -> register (add record to corresponding files)
+		// if (has vacancy) -> register (add record to corresponding files + update vacancy...)
 		// else (no vacancy) -> 
 		//       prompts Admin to choose 1. choose another index to check vacancy (just keep on the do while loop?)
-		//                               2. put into waitlist for this index -> return false + words (exit loop)
+		//                               2. put into waitlist for this index (update file: waitlist)-> return false + words (exit loop)
 		//                               3. just exit (do not register for this course) -> return false + words (exit loop)
 		
 		return true;
@@ -244,16 +244,36 @@ public class UserInterface {
 		// if == 1 ->
 		// create a CourseStructure object, set all attributes
 		// store the new object to the file Course->CourseComponent ??  -> EXIT LOOP
-		// else ->  prompts to reenter ?? () -> keep on LOOP ?
+		// else ->  prompts to re-enter ?? () -> keep on LOOP ?
+		//      ->  user choose to exit -> return false
 		return true;
-		
 	}
 	
 	
 //  Case 7: Enter coursework mark - inclusive of its components
+	public static boolean enterCouWorkMark(String studentid, String courseid, String semYr, double finalExamGrd, 
+			double quizGrd, double assignmentGrd, double projectGrd, double participationGrd) {
+		
+		// ????????????? depends on how we implement the StuCouGrade entity class, i.e. how we store this file ?????????????
+		
+		return true;
+	}
+	
 	
 //  Case 8: Enter exam mark
-//  Case 9: Print course statistics
+	public static boolean enterExamMark() {
+		
+		// ????????????? a part of coursework mark ????????????????//
+		
+		return true;
+	}
+//  Case 9: Print course statistics (coursePerformance)   //??????????????? StuCouGrade Class related ????????????????????//
+	public static void printCouStatistics() {
+		
+	}
 //  Case 10: Print student transcript
+	public static void printTranscript() {
+		
+	}
 }
 

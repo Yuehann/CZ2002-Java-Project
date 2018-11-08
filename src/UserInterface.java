@@ -173,14 +173,20 @@ public class UserInterface {
 	
 	
 //  Case 5: Print student list by lecture, tutorial or laboratory session for a course
-	public static void printStuListByLec() {
+	public static void printStuListByTutLab(Integer index_prinStuList) {
 		
-		
-		
+		System.out.println("Student list for tutotial or laboratory session");
+		// search the CourseIndex object by this index_prinStuList from file CourseIndex
+		// object.getStudentList() -> get all student name/Id ?? in this index group i.e. lab/tutorial
+		// traverse and print the studentList
 	}
 	
-	public static void printStuListByTutLab() {
+	public static void printStuListByLec(String courseId_prinStuList) {
 		
+		System.out.println("Student list for lecture session");
+		// search the Course object by this courseId_prinStuList from file Course
+		// object.getindexGroupList() -> get all index group belonging to this Course
+		// for each index, call printStudentListByTutLab()?? 		
 	}
 	
 	

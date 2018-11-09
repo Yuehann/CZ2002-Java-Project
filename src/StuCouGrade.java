@@ -1,7 +1,7 @@
 
 public class StuCouGrade {
 
-	private String studentid;  // make an new stucou attribute?? U1722007KCZ2001 ????
+	private String studentid;  // make an new stucou attribute?? U1722007KCZ2001 ????  
 	private String courseid;
 	private String semYr;  // Sem2Yr2
 	

@@ -28,11 +28,11 @@ public class Students extends User{
 	}
 /*-----------------------get&set attributes-------------------------- */	
 // Get and set studentId
-	public String getStudenId() {
+	public String getStudentId() {
 		return this.studentId;
 	}
 	
-	public void setStudenId(String studentId) {
+	public void setStudentId(String studentId) {
 		this.studentId = studentId;
 	}
 // Get and set studentName

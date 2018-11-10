@@ -282,7 +282,7 @@ public class UserInterface {
 		// LOOP: (while (true) ?)                        
 		// do a check of whether all entering added == 1 (100%)
 		// if == 1 ->
-		// create a CourseStructure object, set all attributes
+		// find a Course object, object.addCouStructure()
 		// store the new object to the file Course->CourseComponent ??  -> EXIT LOOP
 		// else ->  prompts to re-enter ?? () -> keep on LOOP ?
 		//      ->  user choose to exit -> return false

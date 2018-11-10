@@ -22,11 +22,11 @@ public class UserInterface {
 		                   "8.  Enter exam mark.\n"+
 		                   "9.  Print course statistics.\n"+
 		                   "10. Print student transcript.\n\n"+
-		                   "Enter 0 to exit the course registration system.\n");
-		System.out.printf("Your choice is: ");
+		                   "Enter 0 to exit the course registration system.");
 		
 		
 		do {
+			System.out.printf("\nYour choice is: ");
 			Scanner sc = new Scanner(System.in);
 		    choice = sc.nextInt();
 		
@@ -44,12 +44,12 @@ public class UserInterface {
 			    System.out.printf("  Nationality: ");
 			    String nationality_add = sc.next();
 			    System.out.printf("  School: ");
-			    String school_add = sc.next();
+			    String schoolStu_add = sc.next();
 			    System.out.printf("  Year: ");
 			    Integer year_add = sc.nextInt();
 
 			    boolean added = addStudents(studentId_add, studentName_add, gender_add, nationality_add, 
-						school_add, year_add);
+						schoolStu_add, year_add);
 			    if(added)
 			    	System.out.printf("\nStudent successfully added!\n");
 			    else
@@ -60,6 +60,46 @@ public class UserInterface {
 		    	System.out.printf("\n< Add a course >\n");
 		    	System.out.printf("\nPlease enter the course information \n");
 		    	// The same implementation as case 1 -- add a student ?
+		    	System.out.printf("  Course ID: ");
+			    String courseId_add = sc.next();
+			    System.out.printf("  Course Name: ");
+			    String courseName_add = sc.next();
+			    System.out.printf("  AU Credits: ");
+			    Integer AUCredits_add = sc.nextInt();
+			    System.out.printf("  School: ");
+			    String schoolCou_add = sc.next();
+			    
+			    System.out.printf("  Number of course index: ");
+				Integer indexListSize_add = sc.nextInt();
+				ArrayList<Integer> indexList_add = new ArrayList<Integer>(indexListSize_add);
+				for(int i=0; i<indexListSize_add;i++) {
+				System.out.printf("    Index "+(i+1)+": ");
+				indexList_add.add(sc.nextInt());
+				}
+				
+				// lack the input of courseStructure(weightage), will be implemented in case 6.
+				
+			    System.out.println("  Course Component (Lecture, Tutorial, Lab): ");
+			    System.out.printf("    This course has Lecture session? (Please enter Yes if it has) ");
+			    boolean lec_add;
+			    if(sc.next().equals("Yes"))
+			    	lec_add = true;
+			    else
+			    	lec_add = false;
+			    System.out.printf("    This course has Tutorial session? (Please enter Yes if it has) ");
+			    boolean tut_add;
+			    if(sc.next().equals("Yes"))
+			    	tut_add = true;
+			    else
+			    	tut_add = false;
+			    System.out.printf("    This course has Lab session? (Please enter Yes if it has) ");
+			    boolean lab_add;
+			    if(sc.next().equals("Yes"))
+			    	lab_add = true;
+			    else
+			    	lab_add = false;
+			    //System.out.printf(""+lec_add+tut_add+lab_add); 
+			    addCourse(courseId_add, courseName_add, AUCredits_add, schoolCou_add, indexList_add, lec_add, tut_add, lab_add);
 		    	break;
 // Case 3: Register student for a course (include registering for Tutorial/Lab) ================================================
 		    case 3:
@@ -176,10 +216,13 @@ public class UserInterface {
 	
 	
 //  Case 2: Add a course	
-	public static boolean addCourse(String courseID, String courseName, Integer AUCredits, String school, ArrayList<Integer> indexGroupList, 
-			CourseStructure structure, CourseComponent component) {
+	public static boolean addCourse(String courseId_add, String courseName_add, Integer AUCredits_add, String schoolCou_add, ArrayList<Integer> indexGroupList_add, 
+			boolean lec_add, boolean tut_add, boolean lab_add) {
 		
-		// Create a new course object?? then add into file Course??
+		// Create a new course object?? then add into file Course??    ?????????/ should the infor about list, structure be completed??
+		// Create a component first ->
+		CourseComponent component_add = new CourseComponent(lec_add, tut_add, lab_add);
+		Course newCourse = new Course(courseId_add, courseName_add, AUCredits_add, schoolCou_add, indexGroupList_add, component_add);
 		
 		return true;
 	}

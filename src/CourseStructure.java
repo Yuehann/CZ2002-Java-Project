@@ -10,7 +10,11 @@ public class CourseStructure {
 /*-------------------------constructor---------------------------- */
 	// Creates a new courseStructure without specified attributes
 	public CourseStructure() {
-		
+		this.finalExam=0.2;
+		this.quiz=0.2;
+		this.assignment=0.2;
+		this.project=0.2;
+		this.participation=0.2;
 	}
 	// Create a new courseStructure given weight of finalExam, quiz, assignment, project, participation
 	public CourseStructure(double finalExam, double quiz, double assignment, double project, double participation) {

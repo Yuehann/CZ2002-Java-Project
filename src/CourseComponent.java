@@ -8,7 +8,9 @@ public class CourseComponent {
 /*-------------------------constructor---------------------------- */	
 	// Creates a new courseComponent without specified attributes
 	public CourseComponent() {
-		
+		this.lec = false;
+		this.tut = false;
+		this.lab = false;
 	}
 	// Create a new courseComponent with given lec, tut, lab information
 	public CourseComponent(Boolean lec, Boolean tut, Boolean lab) {

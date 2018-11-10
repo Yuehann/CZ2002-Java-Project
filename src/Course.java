@@ -7,23 +7,28 @@ public class Course {
 	private String school;
 	private ArrayList<Integer> indexGroupList;  //????indexGroupClass,<indexGroup>,contain vacancy, Students?????//
 	
-	private CourseStructure structure;  // uni-directional
+	private CourseStructure structure = new CourseStructure();  // uni-directional
 	private CourseComponent component;  // uni-directional
 	private String coordinator;
 /*-------------------------constructor---------------------------- */	
 	// Creates a new Course without specified attributes
 	public Course(){
+		this.courseID="CZxxxx";
+		this.courseName = "Course X";
+		this.AUCredits = 3;
+		this.school = "SCSE";
 		
+		this.indexGroupList = new ArrayList<Integer>();
+		this.component = new CourseComponent();
 	}
-	// Creates a new Course with given ID, name, AU, waitList of index group, structure, component
-	public Course(String courseID, String courseName, Integer AUCredits, String school, ArrayList<Integer> indexGroupList, 
-			CourseStructure structure, CourseComponent component) {
+	// Creates a new Course with given ID, name, AU, school, waitList of index group, structure, component
+	public Course(String courseID, String courseName, Integer AUCredits, String school, ArrayList<Integer> indexGroupList,
+			CourseComponent component) {
 		this.courseID=courseID;
 		this.courseName = courseName;
 		this.AUCredits = AUCredits;
 		this.school = school;
 		this.indexGroupList = indexGroupList;
-		this.structure = structure;
 		this.component = component;
 	}
 /*-----------------------get&set attributes-------------------------- */		
@@ -112,5 +117,9 @@ public class Course {
 		component.viewCourseComponent();
 		System.out.println("\n\n");
 	}
+	
 }
+
+
+
 

@@ -47,15 +47,9 @@ public class UserInterface {
 			    String school_add = sc.next();
 			    System.out.printf("  Year: ");
 			    Integer year_add = sc.nextInt();
-			    System.out.printf("  Number of course index: ");
-			    Integer indexListSize_add = sc.nextInt();
-			    ArrayList<Integer> indexList_add = new ArrayList<Integer>(indexListSize_add);
-				for(int i=0; i<indexListSize_add;i++) {
-					System.out.printf("    Index "+(i+1)+": ");
-					indexList_add.add(sc.nextInt());
-				}
+
 			    boolean added = addStudents(studentId_add, studentName_add, gender_add, nationality_add, 
-						school_add, year_add, indexList_add);
+						school_add, year_add);
 			    if(added)
 			    	System.out.printf("\nStudent successfully added!\n");
 			    else
@@ -170,10 +164,13 @@ public class UserInterface {
 /*----------------------------------------- UserInterface Methods ---------------------------------------------*/
 //  Case 1: Add a student 
 	public static boolean addStudents(String studentId_add, String studentName_add, char gender_add, String nationality_add, 
-			String school_add, Integer year_add, ArrayList<Integer> indexList_add) {
+			String school_add, Integer year_add) {
 		
 		// Create a new student object?? then add into file Students?? 
- 
+		
+		Students newStudent = new Students(studentId_add, studentName_add, gender_add, nationality_add, school_add, year_add);
+		
+		
 		return true;
 	}
 	

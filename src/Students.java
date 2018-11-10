@@ -7,16 +7,24 @@ public class Students extends User{
 	private String nationality;
 	private String school;
 	private Integer year;
-	private ArrayList<Integer> indexList;
+	
+	private ArrayList<Integer> indexList = new ArrayList<Integer>();
+	private StuCouGrade grade = new StuCouGrade();
+	private double GPA = 0.00;
 	
 /*-------------------------constructor---------------------------- */	
 // Creates a new Student without specified attributes
 	public Students() {
-		
+		this.studentId = "U1xxxxxxx";
+		this.studentName = "Student X";
+		this.gender = 'M';
+		this.nationality = "Singaporean";
+		this.school = "SCSE";
+		this.year = 1;
 	}
 // Creates a new Student with studentId, studentName, gender, nationality, school, year, indexList passed in
 	public Students(String studentId, String studentName, char gender, String nationality, 
-			String school, Integer year, ArrayList<Integer> indexList) {
+			String school, Integer year) {
 		
 		this.studentId = studentId;
 		this.studentName = studentName;
@@ -24,7 +32,7 @@ public class Students extends User{
 		this.nationality = nationality;
 		this.school = school;
 		this.year = year;
-		this.indexList = indexList;
+		
 	}
 /*-----------------------get&set attributes-------------------------- */	
 // Get and set studentId

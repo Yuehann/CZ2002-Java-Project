@@ -1,8 +1,7 @@
 
 public class StuCouGrade {
 
-	private String studentid;  // make an new stucou attribute?? U1722007KCZ2001 ????  
-	private String courseid;
+	private String courseId;  // make an new stucou attribute?? U1722007KCZ2001 ????  
 	private String semYr;  // Sem2Yr2
 	
 	private double finalExamGrd; // set as 4, 4.5, 5...
@@ -12,11 +11,20 @@ public class StuCouGrade {
 	private double participationGrd;
 	
 	private double courseGrade;
-	private double gpa;
 	
 /*-------------------------constructor---------------------------- */	
 // create a new Grades object with no attribute passed in
 	public StuCouGrade() {
+		this.courseId = "CZxxxx";
+		this.semYr = "Sem1Yr1";
+		
+		this.finalExamGrd = 60.0;
+		this.quizGrd = 60.0;
+		this.assignmentGrd = 60.0;
+		this.projectGrd = 60.0;
+		this.participationGrd = 60.0;
+		
+		this.courseGrade = 60.0;
 		
 	}
 // create a new Grades object with studentid,courseid,semYr,finalExamGrd,quizGrd,assignmentGrd,projectGrd,participationGrd,courseGrade passed in

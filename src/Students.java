@@ -3,7 +3,7 @@ import java.io.Serializable;
 
 public class Students extends User implements Serializable{
 	
-	private static final long serialVersionUID = 3L;
+	private static final long serialVersionUID = 1L;
 	
 	private String studentId;
 	private String studentName;
@@ -90,8 +90,15 @@ public class Students extends User implements Serializable{
 	public void setIndexList(ArrayList<Integer> indexList) {
 		this.indexList = indexList;
 	}
-
+// Get and set waitlist
+	public ArrayList<String> getWaitlist(){
+		return this.waitlist;
+	}
+	public void set(ArrayList<String> waitlist) {
+		this.waitlist = waitlist;
+	}
 	
+/*---------------------------------------------------------------------------*/	
 	public void addIndexToIndexList(Integer index) {
 		this.indexList.add(index);
 	}
@@ -99,8 +106,6 @@ public class Students extends User implements Serializable{
 	public void addIndexToWaitlsit(Integer index) {
 		
 	}
-	
-// addCourse, dropCourse
 	
 	
 }

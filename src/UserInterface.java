@@ -6,10 +6,11 @@ import java.io.ObjectInputStream;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.lang.ClassNotFoundException;
+import java.io.Serializable;
 
 // ---------->  All kinds of checks, use EXEPTION ??????????????
 
-public class UserInterface {
+public class UserInterface implements Serializable {
 	
 //	public static int stuNo;   Need this for adding file or not?
 	
@@ -66,15 +67,17 @@ public class UserInterface {
 		    case 2:
 		    	System.out.printf("\n< Add a course >\n");
 		    	System.out.printf("\nPlease enter the course information \n");
-		    	// The same implementation as case 1 -- add a student ?
+		    	
 		    	System.out.printf("  Course ID: ");
 			    String courseId_add = sc.next();
+			    sc.nextLine();
 			    System.out.printf("  Course Name: ");
-			    String courseName_add = sc.next();
+			    String courseName_add = sc.nextLine();
 			    System.out.printf("  AU Credits: ");
 			    Integer AUCredits_add = sc.nextInt();
+			    sc.nextLine();
 			    System.out.printf("  School: ");
-			    String schoolCou_add = sc.next();
+			    String schoolCou_add = sc.nextLine();
 			    
 			    System.out.printf("  Number of course index: ");
 				Integer indexListSize_add = sc.nextInt();

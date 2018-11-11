@@ -89,6 +89,7 @@ public class CourseIndex implements Serializable{
 		return temp;
 	}
 	
+/*---------------------------------------------------------------------------*/
 	public void addStuToStuList(String studentId) {
 		this.studentList.add(studentId+" ");
 	}

@@ -89,6 +89,30 @@ public class CourseIndex implements Serializable{
 		return temp;
 	}
 	
+	public void addStuToStuList(String studentId) {
+		this.studentList.add(studentId+" ");
+	}
+	
+	public boolean updateVacancy() {
+		if(this.vacancy==0) {
+			System.out.println("There is no vacancy available for this index.");
+			return false;
+		}
+		else {
+			this.vacancy -= 1;
+			return true;
+		}
+	}
+	
+	public void addToWaitlist(String studentId) {
+		this.waitlist.add(studentId);
+	}
+	
+	public void printStudentList() {
+		for(int i=0; i<this.studentList.size(); i++) {
+			System.out.printf(this.studentList.get(i)+" ");
+		}
+	}
 
 	
 }

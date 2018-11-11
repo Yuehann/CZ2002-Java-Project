@@ -13,6 +13,7 @@ public class Students extends User implements Serializable{
 	private Integer year;
 	
 	private ArrayList<Integer> indexList = new ArrayList<Integer>();
+	private ArrayList<String> waitlist = new ArrayList<String>();;
 	private StuCouGrade grade = new StuCouGrade();
 	private double GPA = 0.00;
 	
@@ -90,5 +91,16 @@ public class Students extends User implements Serializable{
 		this.indexList = indexList;
 	}
 
+	
+	public void addIndexToIndexList(Integer index) {
+		this.indexList.add(index);
+	}
+	
+	public void addIndexToWaitlsit(Integer index) {
+		
+	}
+	
 // addCourse, dropCourse
+	
+	
 }

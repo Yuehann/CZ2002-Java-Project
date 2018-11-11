@@ -24,6 +24,7 @@ public class SerializeFile {
 	}
 	
 //----------------------------------------Append----------------changed to return a boolean to inform success/fail-----------------//
+	//  Polymophism ??
 	public boolean appendNew(Object o) {
 		try {
 			FileOutputStream fos;

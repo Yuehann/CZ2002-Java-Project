@@ -43,8 +43,9 @@ public class UserInterface {
 		    	System.out.printf("\nPlease enter the student information \n");
 		    	System.out.printf("  Student ID: ");
 			    String studentId_add = sc.next();
+			    sc.nextLine();
 			    System.out.printf("  Student Name: ");
-			    String studentName_add = sc.next();
+			    String studentName_add = sc.nextLine();
 			    System.out.printf("  Gender: ");
 			    char gender_add = sc.next().charAt(0);
 			    System.out.printf("  Nationality: ");
@@ -261,29 +262,84 @@ public class UserInterface {
 //	Case 3: Register student for a course (include registering for Tutorial/Lab)
 	public static boolean regiStuToCou(String studentId_regi, String courseId_regi) {
 		
-		// search to get the Course object by courseId
-		// System.out.println()...all indexGroupList for this course object
-		// DO WHILE LOOP:(true?)
-		// Prompts Admin to input an index wanted
-		// checkVacancyAvailable(index) -> tell whether can register or not
-		// get the index object by searching db
-		// if (has vacancy) -> register (add record to corresponding files + update vacancy...)
-		// else (no vacancy) -> 
-		//       prompts Admin to choose 1. choose another index to check vacancy (just keep on the do while loop?)
-		//                               2. put into waitlist for this index (update file: waitlist)-> return false + words (exit loop)
-		//                               3. just exit (do not register for this course) -> return false + words (exit loop)
-		
-		return true;
+		Scanner sc = new Scanner(System.in);
+		SerializeFile sw_cou = new SerializeFile("course1.txt");
+		SerializeFile sw_stu = new SerializeFile("student1.txt");
+		SerializeFile sw_ind = new SerializeFile("index1.txt");
+//???????????????????????????????????????????????????????????????????????????????????//		
+		Students studentregi_obj = (Students) sw_stu.read(studentId_regi, 's');
+		System.out.printf(""+studentregi_obj);
+		Course regi_course = (Course) sw_cou.read(courseId_regi, 'c'); 
+		System.out.printf(""+regi_course);
+
+		regi_course.viewIndexGroupList();                   
+
+		do {
+			System.out.printf("Please enter the index you want to register: ");		
+			Integer regi_index = sc.nextInt();
+			Integer regi_vacancy = checkVacancyAvailable(regi_index);	
+			CourseIndex indexregi_obj = (CourseIndex) sw_ind.read(regi_index.toString(), 'i');  
+			if(regi_vacancy!=-1) { 		                               // if (has vacancy) -> register (add record to corresponding files + update vacancy...)
+				indexregi_obj.addStuToStuList(studentId_regi);  
+				// sw_ind.fillArray(); ??????????????????????
+				studentregi_obj.addIndexToIndexList(regi_index);
+				
+				indexregi_obj.updateVacancy();
+				System.out.println("the updated vacancy is "+indexregi_obj.getVacancy());
+				sw_ind.writeArray();
+				sw_stu.writeArray();
+			}
+			else {                                   
+//		 prompts Admin to choose 1. choose another index to check vacancy (just keep on the do while loop?)
+//                               2. put into waitlist for this index (update file: waitlist)-> return false + words (exit loop)
+//                               3. just exit (do not register for this course) -> return false + words (exit loop)
+				System.out.println("Do you choose to:"+
+			                       "  1. select another index to check vacancy."+
+						           "  2. add into the waitlist for this index."+
+			                       "  3. exit this registration.");
+				System.out.printf("\n  Your choice is: ");
+				int choice_regi = sc.nextInt();
+				switch(choice_regi) {
+				case 1:
+					break;
+				case 2:
+					indexregi_obj.addToWaitlist(studentId_regi);
+					studentregi_obj.addIndexToWaitlsit(regi_index);
+					System.out.println("The student "+studentId_regi+" is added into waitlist for index "+regi_index);
+					sw_ind.writeArray();
+					sw_stu.writeArray();
+					return false;
+				case 3:
+					System.out.println("Exit this registration.");
+					return false;
+				default:
+					System.out.println("There is no this option.");
+					return false;
+				}
+			}
+
+		}while(true);
+	
 	}
 	
 	
 //  Case 4: Check available slot in a class (vacancy in a class)
 	public static Integer checkVacancyAvailable(Integer index_vacy) {
 		
-		// search to get the CourseIndex object by index_vacy
-		// object.getVacancy() return the vacancy available in that class
+		                                                         // search to get the CourseIndex object by index_vacy
+		SerializeFile sw=new SerializeFile("index1.txt");
+		CourseIndex index_obj = (CourseIndex) sw.read(index_vacy.toString(), 'i');
+		                                                         // object.getVacancy() return the vacancy available in that class
+		Integer vacancy = index_obj.getVacancy();
+		if(vacancy>0) {
+			System.out.println("The vacancy available for index "+index_vacy+" is "+vacancy);
+		    return vacancy;
+		    }
+		else {
+			System.out.println("There is no vacancy available for index "+index_vacy);
+			return -1;
+			}
 		
-		return 0;
 	}
 	
 	
@@ -292,7 +348,10 @@ public class UserInterface {
 		
 		System.out.println("Student list for tutotial or laboratory session");
 		// search the CourseIndex object by this index_prinStuList from file CourseIndex
+		SerializeFile sw=new SerializeFile("index1.txt");
+		CourseIndex index_obj = (CourseIndex) sw.read(index_prinStuList.toString(), 'i');
 		// object.getStudentList() -> get all student name/Id ?? in this index group i.e. lab/tutorial
+		index_obj.printStudentList();
 		// traverse and print the studentList
 	}
 	
@@ -300,8 +359,15 @@ public class UserInterface {
 		
 		System.out.println("Student list for lecture session");
 		// search the Course object by this courseId_prinStuList from file Course
+		SerializeFile sw_cou = new SerializeFile("course1.txt");
+		SerializeFile sw_ind = new SerializeFile("index1.txt");
+		Course course_obj = (Course) sw_cou.read(courseId_prinStuList, 'i');
 		// object.getindexGroupList() -> get all index group belonging to this Course
-		// for each index, call printStudentListByTutLab()?? 		
+		// for each index, call printStudentListByTutLab()?? 	
+		for(int i=0; i<course_obj.getIndexGroupList().size(); i++) {
+			CourseIndex index_obj = (CourseIndex) sw_ind.read(course_obj.getIndexGroupList().get(i).toString(),'i');
+			index_obj.printStudentList();
+		}	
 	}
 	
 	

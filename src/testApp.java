@@ -16,8 +16,11 @@ public class testApp {
 		sw.appendNew(i3);
 		sw.appendNew(i4);
 		sw.appendNew(i5);
+
 		System.out.println("test1 :");
 		printresult(sw.getfile());
+//		System.out.println(sw.read("1", 'i'));
+		
 	//test2 append to existed file
 		CourseIndex i6=new CourseIndex(6,"cz2001",10,null,null);
 		sw.appendNew(i6);

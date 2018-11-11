@@ -207,11 +207,11 @@ public class UserInterface {
 			String school_add, Integer year_add) {
 		
 		// Create a new student object?? then add into file Students?? 
-		
+		SerializeFile sw=new SerializeFile("student1.txt");
 		Students newStudent = new Students(studentId_add, studentName_add, gender_add, nationality_add, school_add, year_add);
-		
-		
-		return true;
+		boolean added = sw.appendNew(newStudent);
+
+		return added;
 	}
 	
 	
@@ -221,10 +221,13 @@ public class UserInterface {
 		
 		// Create a new course object?? then add into file Course??    ?????????/ should the infor about list, structure be completed??
 		// Create a component first ->
+		SerializeFile sw=new SerializeFile("course1.txt");
 		CourseComponent component_add = new CourseComponent(lec_add, tut_add, lab_add);
 		Course newCourse = new Course(courseId_add, courseName_add, AUCredits_add, schoolCou_add, indexGroupList_add, component_add);
+		boolean added = sw.appendNew(newCourse);
 		
-		return true;
+		return added;		
+//????		return true;
 	}
 	
 	

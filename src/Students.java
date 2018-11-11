@@ -1,5 +1,9 @@
 import java.util.ArrayList;
-public class Students extends User{
+import java.io.Serializable;
+
+public class Students extends User implements Serializable{
+	
+	private static final long serialVersionUID = 1L;
 	
 	private String studentId;
 	private String studentName;

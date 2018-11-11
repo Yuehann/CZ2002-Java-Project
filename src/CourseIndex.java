@@ -2,6 +2,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 public class CourseIndex implements Serializable{
 
+	private static final long serialVersionUID = 1L;
+	
 	private Integer index;
 	private String courseId;
 	private Integer vacancy;

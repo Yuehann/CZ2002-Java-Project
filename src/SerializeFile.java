@@ -1,5 +1,7 @@
 import java.io.*;
 import java.util.ArrayList;
+
+
 public class SerializeFile {
 	File f;
 	ArrayList<Object> target;
@@ -16,12 +18,13 @@ public class SerializeFile {
 		this.fexists=this.f.exists();
 		this.fempty=f.length()==0;
 	}
+	
 	public File getfile() {
 		return this.f;
 	}
 	
-//----------------------------------------Append----------------------------------------
-	public void appendNew(Object o) {
+//----------------------------------------Append----------------changed to return a boolean to inform success/fail-----------------//
+	public boolean appendNew(Object o) {
 		try {
 			FileOutputStream fos;
 			ObjectOutputStream out;
@@ -35,6 +38,7 @@ public class SerializeFile {
 				out.close();
 				fempty=f.length()==0;
 				fexists=this.f.exists();
+				return true;
 			}
 			
 			else if (fexists&&fempty) {
@@ -44,6 +48,7 @@ public class SerializeFile {
 				out.close();
 				fempty=f.length()==0;
 				fexists=this.f.exists();
+				return true;
 			}
 			
 			else if (!fexists){
@@ -54,16 +59,20 @@ public class SerializeFile {
 				out.close();
 				fempty=f.length()==0;
 				fexists=this.f.exists();
+				return true;
 			}
 			
-			else System.out.println("Appending error!");
+			else //System.out.println("Appending error!");
+				return false;
 		} 
 //		catch exceptions
 		catch (FileNotFoundException e) {
 			System.out.println("FileNotFoundException: "+e.getMessage());
 			e.printStackTrace();
+			return false;
 		} catch (IOException e) {
 			System.out.println("IOExcepton: "+e.getMessage());
+			return false;
 		}}
 //	    end 
 	

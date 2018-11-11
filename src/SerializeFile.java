@@ -1,4 +1,3 @@
-package Serialization;
 import java.io.*;
 import java.util.ArrayList;
 public class SerializeFile {
@@ -146,7 +145,7 @@ public class SerializeFile {
 		}
 	}
 	
-	public void updateWrite(Student i) throws FileNotFoundException, IOException {
+	public void updateWrite(Students i) throws FileNotFoundException, IOException {
 		
 		if (targetexists&&!targetempty) {
 			if (i==null) System.out.println("Nothing to update!");
@@ -191,7 +190,7 @@ public class SerializeFile {
 			}
 			else if (mode=='s') {
 					for(int j=0;j<this.target.size();j++) {
-						if ((((Student)(target.get(j))).getStudentId()).compareTo(num)==0) {
+						if ((((Students)(target.get(j))).getStudentId()).compareTo(num)==0) {
 							return j;
 						}
 					return -1;

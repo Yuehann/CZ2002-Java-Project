@@ -1,6 +1,10 @@
 import java.util.ArrayList;
-public class Course {
+import java.io.Serializable;
 
+public class Course implements Serializable{
+
+	private static final long serialVersionUID = 2L;
+	
 	private String courseID;
 	private String courseName;
 	private Integer AUCredits;

@@ -1,6 +1,9 @@
+import java.io.Serializable;
 
-public class StuCouGrade {
+public class StuCouGrade implements Serializable {
 
+	private static final long serialVersionUID = 4L;
+	
 	private String courseId;  // make an new stucou attribute?? U1722007KCZ2001 ????  
 	private String semYr;  // Sem2Yr2
 	
@@ -34,6 +37,7 @@ public class StuCouGrade {
     }
 /*-----------------------get&set attributes-------------------------- */
 // get and set studentid
+    
 // get and set courseid
 // get and set semYr
 // get and set finalExamGrd

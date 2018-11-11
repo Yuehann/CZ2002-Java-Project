@@ -1,6 +1,9 @@
+import java.io.Serializable;
 
-public class CourseComponent {
+public class CourseComponent implements Serializable {
     
+	private static final long serialVersionUID = 5L;
+	
 	private Boolean lec;
 	private Boolean tut;
 	private Boolean lab;

@@ -1,6 +1,9 @@
+import java.io.Serializable;
 
-public class CourseStructure {
+public class CourseStructure implements Serializable {
 
+	private static final long serialVersionUID = 6L;
+	
 	private double finalExam;
 	private double quiz;
 	private double assignment;

@@ -1,5 +1,11 @@
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.lang.ClassNotFoundException;
 
 // ---------->  All kinds of checks, use EXEPTION ??????????????
 
@@ -48,9 +54,9 @@ public class UserInterface {
 			    System.out.printf("  Year: ");
 			    Integer year_add = sc.nextInt();
 
-			    boolean added = addStudents(studentId_add, studentName_add, gender_add, nationality_add, 
+			    boolean added_stu = addStudents(studentId_add, studentName_add, gender_add, nationality_add, 
 						schoolStu_add, year_add);
-			    if(added)
+			    if(added_stu)
 			    	System.out.printf("\nStudent successfully added!\n");
 			    else
 			    	System.out.printf("Adding student failed, please check the information and try again.");
@@ -80,26 +86,30 @@ public class UserInterface {
 				// lack the input of courseStructure(weightage), will be implemented in case 6.
 				
 			    System.out.println("  Course Component (Lecture, Tutorial, Lab): ");
-			    System.out.printf("    This course has Lecture session? (Please enter Yes if it has) ");
+			    System.out.printf("    This course has Lecture session? (Please enter Yes if it has, No if not) ");
 			    boolean lec_add;
 			    if(sc.next().equals("Yes"))
 			    	lec_add = true;
 			    else
 			    	lec_add = false;
-			    System.out.printf("    This course has Tutorial session? (Please enter Yes if it has) ");
+			    System.out.printf("    This course has Tutorial session? (Please enter Yes if it has, No if not) ");
 			    boolean tut_add;
 			    if(sc.next().equals("Yes"))
 			    	tut_add = true;
 			    else
 			    	tut_add = false;
-			    System.out.printf("    This course has Lab session? (Please enter Yes if it has) ");
+			    System.out.printf("    This course has Lab session? (Please enter Yes if it has, No if not) ");
 			    boolean lab_add;
 			    if(sc.next().equals("Yes"))
 			    	lab_add = true;
 			    else
 			    	lab_add = false;
 			    //System.out.printf(""+lec_add+tut_add+lab_add); 
-			    addCourse(courseId_add, courseName_add, AUCredits_add, schoolCou_add, indexList_add, lec_add, tut_add, lab_add);
+			    boolean added_cou = addCourse(courseId_add, courseName_add, AUCredits_add, schoolCou_add, indexList_add, lec_add, tut_add, lab_add);
+			    if(added_cou)
+			    	System.out.printf("\nCourse successfully added!\n");
+			    else
+			    	System.out.printf("Adding course failed, please check the information and try again.");
 		    	break;
 // Case 3: Register student for a course (include registering for Tutorial/Lab) ================================================
 		    case 3:
@@ -202,7 +212,24 @@ public class UserInterface {
 	}
 
 /*----------------------------------------- UserInterface Methods ---------------------------------------------*/
-//  Case 1: Add a student 
+	public static void printresult(File f) throws IOException, ClassNotFoundException {
+		FileInputStream fi=new FileInputStream(f);
+		ObjectInputStream oi=new ObjectInputStream(fi);
+		ArrayList<Object> temp=new ArrayList<Object>();
+		if (fi.available()>0)
+		{while (fi.available()>0) {
+			temp.add(oi.readObject());
+		}
+		for(int i=0;i<temp.size();i++) {
+			System.out.println(((CourseIndex)(temp.get(i))).toString());
+		}
+		oi.close();}
+		else System.out.println("empty file");
+	}
+	
+	
+	
+	//  Case 1: Add a student 
 	public static boolean addStudents(String studentId_add, String studentName_add, char gender_add, String nationality_add, 
 			String school_add, Integer year_add) {
 		

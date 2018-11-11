@@ -46,7 +46,7 @@ public class StuCouGrade {
     public double calcCourseGrade(String courseid, double finalExamGrd, double quizGrd, double assignmentGrd, double projectGrd, 
     		double participationGrd) {
     	
-    	// search courseid in file Course to get that Course object,  ?no need t
+    	// search courseid in file Course to get that Course object,  ?no need 
     	// object.getStructure() -> get the weightage of each kind of assessment
     	// calculate using weightage and grade of each assessment 
     	// return courseGrade for this Grades object                 ???? -> do not store this in the file now (need studentid to update)??

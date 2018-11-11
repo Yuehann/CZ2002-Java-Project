@@ -1,5 +1,6 @@
+import java.io.Serializable;
 import java.util.ArrayList;
-public class CourseIndex {
+public class CourseIndex implements Serializable{
 
 	private Integer index;
 	private String courseId;
@@ -12,8 +13,8 @@ public class CourseIndex {
 	
 /*-------------------------constructor---------------------------- */	
 // Creates a new CourseIndex without specified attributes
-	public CourseIndex() {
-		
+	public CourseIndex(Integer index) {
+		this.index=index;
 	}
 // Create a new CourseIndex with index, courseId, vacancy, waitlist, studentList passed in
 	public CourseIndex(Integer index, String courseId, Integer vacancy, ArrayList<String> waitlist, 
@@ -21,8 +22,11 @@ public class CourseIndex {
 		this.index = index;
 		this.courseId = courseId;
 		this.vacancy = vacancy;
-		this.waitlist = waitlist;
-		this.studentList = studentList;
+		if (waitlist!=null ) this.waitlist = waitlist;
+		else this.waitlist=new ArrayList<String>();
+		if (studentList!=null) this.studentList = studentList;
+		else this.studentList=new ArrayList<String>();
+		
 	}
 /*-----------------------get&set attributes-------------------------- */	
 // Get and set index
@@ -47,10 +51,10 @@ public class CourseIndex {
 		this.vacancy = vacancy;
 	}
 // Get and set waitlist
-	public ArrayList<String> getWaitalsit() {
+	public ArrayList<String> getWaitlist() {
 		return this.waitlist;
 	}
-	public void setWaitlsit(ArrayList<String> waitlsit) {
+	public void setWaitlist(ArrayList<String> waitlsit) {
 		this.waitlist = waitlsit;
 	}
 // Get and set studentList
@@ -59,6 +63,28 @@ public class CourseIndex {
 	}
 	public void setStudentList(ArrayList<String> studentList) {
 		this.studentList = studentList;
+	}
+	
+	public String toString() {
+		String temp="";
+		temp=temp+this.index+" "+this.courseId+ " "+this.vacancy+" ";
+		
+		if (this.waitlist!=null&&this.waitlist.size()!=0) {
+			for(int i=0;i<this.waitlist.size();i++) {
+				temp+=this.waitlist.get(i);
+			}
+			temp+=" "; 
+		}
+		else temp+="null ";
+		
+		if (this.studentList!=null&&this.studentList.size()!=0) {
+			for(int i=0;i<this.studentList.size();i++) {
+				temp+=this.studentList.get(i);
+			}
+		}
+		else temp+="null";
+		
+		return temp;
 	}
 	
 

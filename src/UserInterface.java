@@ -1,3 +1,4 @@
+import java.io.Console;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -6,15 +7,40 @@ import java.io.ObjectInputStream;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.lang.ClassNotFoundException;
-import java.io.Serializable;
 
-// ---------->  All kinds of checks, use EXEPTION ??????????????
 
-public class UserInterface implements Serializable {
+public class UserInterface {
 	
-//	public static int stuNo;   Need this for adding file or not?
 	
 	public static void main(String[] args) {
+		mainUI();
+	}
+	
+	
+	public static void mainUI() {
+		Console cons = System.console();
+		Admin admin = new Admin();
+		Scanner sc = new Scanner(System.in);
+
+		while (admin.getAdminID() == null) {
+			System.out.println("Welcome to NTU Course Registration System (CONSOLE)\n");
+			System.out.printf("Please enter your userID: ");
+			String userID = sc.next();
+
+			char[] password = cons.readPassword("Please enter your password: ");
+			String passString = new String(password);
+
+			if (admin.login(userID, PasswordController.hash(passString))) {
+				admin = new Admin(userID, PasswordController.hash(passString));
+				adminUI(admin, sc);
+			} else {
+				System.out.println("Invalid userID or password!\n");
+			}
+			admin.setAdminID(null);
+		}
+	}
+	
+	public static void adminUI (Admin admin, Scanner sc){
 		
 		int choice;
 		
@@ -34,7 +60,6 @@ public class UserInterface implements Serializable {
 		
 		do {
 			System.out.printf("\nYour choice is: ");
-			Scanner sc = new Scanner(System.in);
 		    choice = sc.nextInt();
 		
 		    switch(choice) {
@@ -214,24 +239,14 @@ public class UserInterface implements Serializable {
 		}while(choice!=-1);
 
 	}
+	
+	
+	
+	
+	
 
 /*----------------------------------------- UserInterface Methods ---------------------------------------------*/
-	public static void printresult(File f) throws IOException, ClassNotFoundException {
-		FileInputStream fi=new FileInputStream(f);
-		ObjectInputStream oi=new ObjectInputStream(fi);
-		ArrayList<Object> temp=new ArrayList<Object>();
-		if (fi.available()>0)
-		{while (fi.available()>0) {
-			temp.add(oi.readObject());
-		}
-		for(int i=0;i<temp.size();i++) {
-			System.out.println(((CourseIndex)(temp.get(i))).toString());
-		}
-		oi.close();}
-		else System.out.println("empty file");
-	}
-	
-	
+
 	
 	//  Case 1: Add a student 
 	public static boolean addStudents(String studentId_add, String studentName_add, char gender_add, String nationality_add, 
@@ -414,5 +429,7 @@ public class UserInterface implements Serializable {
 	public static void printTranscript() {
 		
 	}
+	
+
 }
 

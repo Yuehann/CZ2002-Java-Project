@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.io.Serializable;
 
-public class Students extends User implements Serializable{
+public class Students implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 	

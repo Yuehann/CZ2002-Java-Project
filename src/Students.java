@@ -13,7 +13,7 @@ public class Students implements Serializable{
 	private Integer year;
 	
 	private ArrayList<Integer> indexList = new ArrayList<Integer>();
-	private ArrayList<String> waitlist = new ArrayList<String>();;
+	private ArrayList<Integer> waitlist = new ArrayList<Integer>();;
 	private StuCouGrade grade = new StuCouGrade();
 	private double GPA = 0.00;
 	
@@ -91,11 +91,22 @@ public class Students implements Serializable{
 		this.indexList = indexList;
 	}
 // Get and set waitlist
-	public ArrayList<String> getWaitlist(){
+	public ArrayList<Integer> getWaitlist(){
 		return this.waitlist;
 	}
-	public void set(ArrayList<String> waitlist) {
+	public void set(ArrayList<Integer> waitlist) {
 		this.waitlist = waitlist;
+	}
+// Get and set grade
+	public StuCouGrade getGrade() {
+		return this.grade;
+	}
+	public void setGrade(StuCouGrade grade) {
+		this.grade = grade;
+	}
+// Get GPA
+	public double getGPA() {
+		return this.GPA;
 	}
 	
 /*---------------------------------------------------------------------------*/	
@@ -104,8 +115,7 @@ public class Students implements Serializable{
 	}
 	
 	public void addIndexToWaitlsit(Integer index) {
-		
+		this.waitlist.add(index);
 	}
-	
 	
 }

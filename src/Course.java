@@ -110,6 +110,15 @@ public class Course implements Serializable{
 	public void setCourseComponent(CourseComponent component) {
 		this.component=component;
 	}
+/*------------------------------------------------------------------ */	
+// Get and set coordinator
+	public String getCoordinator() {
+		return this.coordinator;
+	}
+	public void setCoordinator(String coordinator) {
+		this.coordinator = coordinator;
+	}
+	
 /*------------------------------------------------------------------ */
 	public void viewCourseInfo(Integer AUCredits,CourseStructure structure, CourseComponent component) {
 		System.out.println("Course code: " + this.courseID);

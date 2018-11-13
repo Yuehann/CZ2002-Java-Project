@@ -67,6 +67,8 @@ public class CourseIndex implements Serializable{
 		this.studentList = studentList;
 	}
 	
+	
+/*---------------------------------------------------------------------------*/	
 	public String toString() {
 		String temp="";
 		temp=temp+this.index+" "+this.courseId+ " "+this.vacancy+" ";

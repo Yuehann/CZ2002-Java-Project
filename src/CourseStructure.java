@@ -18,15 +18,10 @@ public class CourseStructure implements Serializable {
 	
 	// Create a new courseStructure given weight of finalExam, quiz, assignment, project, participation
 	public CourseStructure(double finalExam, double coursework, double assignment, double participation) {
-		if ((finalExam+coursework-1>1e-6)||(coursework!=0&&assignment+participation-1>1e-6)||coursework==0&&(assignment!=0||participation!=0)){
-			System.out.println("Invalid combination!");
-		}
-		else {
 			this.exam=finalExam;
 			this.coursework=coursework;
 			this.assignment=assignment;
 			this.participation=participation;
-		}
 	}
 /*---------------------------------------------------------------- */
 	// Get the weight of each assessment
@@ -71,7 +66,7 @@ public class CourseStructure implements Serializable {
 	
 	public String toString() {
 		String temp="";
-		temp+=this.exam+"|"+this.coursework+"|"+this.assignment+"|"+this.participation;
+		temp+=this.exam+" "+this.coursework+" "+this.assignment+" "+this.participation;
 		return temp;
 				}
 }

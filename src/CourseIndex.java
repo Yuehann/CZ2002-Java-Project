@@ -110,6 +110,10 @@ public class CourseIndex implements Serializable{
 	}
 	
 	public void printStudentList() {
+		if (this.studentList.size()==0) {
+			System.out.println("Index:"+this.index+" has not been registered yet.");
+			return;
+		}
 		for(int i=0; i<this.studentList.size(); i++) {
 			System.out.printf(this.studentList.get(i)+" ");
 		}

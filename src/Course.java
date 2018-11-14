@@ -15,16 +15,6 @@ public class Course implements Serializable{
 	private CourseComponent component;  // uni-directional
 	private String coordinator;
 /*-------------------------constructor---------------------------- */	
-	// Creates a new Course without specified attributes
-	public Course(){
-		this.courseID="CZxxxx";
-		this.courseName = "Course X";
-		this.AUCredits = 3;
-		this.school = "SCSE";
-		
-		this.indexGroupList = new ArrayList<Integer>();
-		this.component = new CourseComponent();
-	}
 	// Creates a new Course with given ID, name, AU, school, waitList of index group, structure, component
 	public Course(String courseID, String courseName, Integer AUCredits, String school, ArrayList<Integer> indexGroupList,
 			CourseComponent component) {
@@ -121,21 +111,14 @@ public class Course implements Serializable{
 		component.viewCourseComponent();
 		System.out.println("\n\n");
 	}
+	
 	public String toString() {
 		String temp="";
 		temp=temp+this.courseID+" "+this.courseName+ " "+this.AUCredits+" "+this.school+" "+this.component.toString()+" "+this.structure.toString()+" ";
-		
-//		if (this.waitlist!=null&&this.waitlist.size()!=0) {
-//			for(int i=0;i<this.waitlist.size();i++) {
-//				temp+=this.waitlist.get(i);
-//			}
-//			temp+=" "; 
-//		}
-//		else temp+="null ";
-		
 		if (this.indexGroupList!=null&&this.indexGroupList.size()!=0) {
 			for(int i=0;i<this.indexGroupList.size();i++) {
 				temp+=this.indexGroupList.get(i);
+				if (i!=this.indexGroupList.size()-1) temp+=" ";
 			}
 		}
 		else temp+="null";

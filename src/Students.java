@@ -12,21 +12,11 @@ public class Students implements Serializable{
 	private String school;
 	private Integer year;
 	
-	private ArrayList<Integer> indexList = new ArrayList<Integer>();
-	private ArrayList<String> waitlist = new ArrayList<String>();;
-	private StuCouGrade grade = new StuCouGrade();
-	private double GPA = 0.00;
+	private ArrayList<Integer> indexList;
+	private ArrayList<String> waitlist;
+//	private double GPA = 0.00;
 	
 /*-------------------------constructor---------------------------- */	
-// Creates a new Student without specified attributes
-	public Students() {
-		this.studentId = "U1xxxxxxx";
-		this.studentName = "Student X";
-		this.gender = 'M';
-		this.nationality = "Singaporean";
-		this.school = "SCSE";
-		this.year = 1;
-	}
 // Creates a new Student with studentId, studentName, gender, nationality, school, year, indexList passed in
 	public Students(String studentId, String studentName, char gender, String nationality, 
 			String school, Integer year) {
@@ -37,7 +27,8 @@ public class Students implements Serializable{
 		this.nationality = nationality;
 		this.school = school;
 		this.year = year;
-		
+		this.indexList= new ArrayList<Integer>();
+		this.waitlist = new ArrayList<String>();
 	}
 /*-----------------------get&set attributes-------------------------- */	
 // Get and set studentId
@@ -83,6 +74,7 @@ public class Students implements Serializable{
 	public void setYear(Integer year) {
 		this.year = year;
 	}
+
 // Get and set indexList, a list of course index that student registered in
 	public ArrayList<Integer> getIndexList(){
 		return this.indexList;

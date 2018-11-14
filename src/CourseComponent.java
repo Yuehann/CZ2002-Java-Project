@@ -4,9 +4,9 @@ public class CourseComponent implements Serializable {
     
 	private static final long serialVersionUID = 5L;
 	
-	private Boolean lec;
-	private Boolean tut;
-	private Boolean lab;
+	private boolean lec;
+	private boolean tut;
+	private boolean lab;
 	
 /*-------------------------constructor---------------------------- */	
 	// Creates a new courseComponent without specified attributes
@@ -23,25 +23,26 @@ public class CourseComponent implements Serializable {
 	}
 /*---------------------------------------------------------------- */
 	// Get the components of a course
-	public Boolean hasLec() {
+	public boolean hasLec() {
 		return this.lec;
 	}
-	public Boolean hasTut() {
+	public boolean hasTut() {
 		return this.tut;
 	}
-	public Boolean hasLab() {
+	public boolean hasLab() {
 		return this.lab;
 	}
 	// Change the components of a course
-	public void setLec(Boolean lec) {
+	public void setLec(boolean lec) {
 		this.lec=lec;
 	}
-	public void setTut(Boolean tut) {
+	public void setTut(boolean tut) {
 		this.tut=tut;
 	}
-	public void setLab(Boolean lab) {
+	public void setLab(boolean lab) {
 		this.lab=lab;
 	}
+	
 /*---------------------------------------------------------------- */
 	// Print component of course
 	public void viewCourseComponent() {

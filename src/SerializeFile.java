@@ -9,6 +9,7 @@ public class SerializeFile {
 	boolean targetempty;
 	boolean fexists;
 	boolean fempty;
+	boolean targetadded;
 	
 	public SerializeFile(String filename) {
 		f=new File(filename);
@@ -17,6 +18,7 @@ public class SerializeFile {
 		this.targetempty=target.size()==0;
 		this.fexists=this.f.exists();
 		this.fempty=f.length()==0;
+		this.targetadded=false;
 	}
 	
 	public File getfile() {
@@ -27,6 +29,22 @@ public class SerializeFile {
 		return this.fempty;
 	}
 	
+	public ArrayList<Object> gettarget(){
+		return this.target;
+	}
+	public void printTarget(char mode) {
+		if (!targetadded) this.fillArray();
+		else {
+			if (!targetexists||targetempty) System.out.println("Empty List!");
+			else {
+				if (mode=='s') {
+					for(int i=0;i<this.target.size();i++) {
+						System.out.println();
+					}
+					}
+			}
+		}
+	}
 //----------------------------------------Append----------------changed to return a boolean to inform success/fail-----------------//
 	//  Polymophism ??
 	public boolean appendNew(Object o) {
@@ -89,7 +107,7 @@ public class SerializeFile {
 			FileInputStream fis;
 			ObjectInputStream  in;
 		if ((!fexists)||fempty) {
-			System.out.println("File not available!");
+			System.out.println("Empty file:"+this.f.getPath());
 			}
 		else {
 				fis=new FileInputStream(f);
@@ -103,6 +121,7 @@ public class SerializeFile {
 				in.close();
 				targetexists=target!=null;
 				targetempty=target.size()==0;
+				targetadded=true;
 		}
 		}
 		
@@ -116,8 +135,8 @@ public class SerializeFile {
 		}
 		}
 //----------------------------------------update----------------------------------------	
-	public void updateWrite(CourseIndex i) throws FileNotFoundException, IOException {
-		
+	public void updateWrite(CourseIndex i){
+		if (!targetadded) this.fillArray();
 		if (targetexists&&!targetempty) {
 			if (i==null) System.out.println("Nothing to update!");
 			else {
@@ -138,8 +157,8 @@ public class SerializeFile {
 		}
 	}
 	
-	public void updateWrite(Course i) throws FileNotFoundException, IOException {
-		
+	public void updateWrite(Course i){
+		if (!targetadded) this.fillArray();
 		if (targetexists&&!targetempty) {
 			if (i==null) System.out.println("Nothing to update!");
 			else {
@@ -160,8 +179,8 @@ public class SerializeFile {
 		}
 	}
 	
-	public void updateWrite(Students i) throws FileNotFoundException, IOException {
-		
+	public void updateWrite(Students i){
+		if (!targetadded) this.fillArray();
 		if (targetexists&&!targetempty) {
 			if (i==null) System.out.println("Nothing to update!");
 			else {
@@ -182,32 +201,34 @@ public class SerializeFile {
 		}
 	}
 	
-	public void updateWrite(StudentCourseGrade i) throws FileNotFoundException, IOException {
+	public void updateWrite(StudentCourseGrade i){
+			if (!targetadded) this.fillArray();
+			if (targetexists&&!targetempty) {
+				if (i==null) System.out.println("Nothing to update!");
+				else {
+					int j=this.search(i.getStudentId(),i.getCourseId());
 		
-		if (targetexists&&!targetempty) {
-			if (i==null) System.out.println("Nothing to update!");
-			else {
-				int j=this.search(i.getStudentId(),i.getCourseId(),i.getSemyr());
-		
-				if (j!=-1) {
-					if (i.getStudentId()==null) target.remove(j);
-					else target.set(j,i);
-					this.writeArray();
+					if (j!=-1) {
+						if (i.getStudentId()==null) target.remove(j);
+						else target.set(j,i);
+						this.writeArray();
+					}
+					else System.out.println("Object not found.");
 				}
-				else System.out.println("Object not found.");
 			}
-		}
+		
 	
-		else {
-			if (i==null) System.out.println("Nothing to update!");
-			else this.appendNew(i);
-		}
+			else {
+				if (i==null) System.out.println("Nothing to update!");
+				else this.appendNew(i);
+			}
 	}
 	
 	
 			
 //----------------------------------------search in target----------------------------------------	
 	public int search(String num,char mode) {
+		if (!targetadded) this.fillArray();
 		if (targetexists&&!targetempty) {
 			if (mode=='i') {
 				for(int j=0;j<this.target.size();j++) {
@@ -239,12 +260,12 @@ public class SerializeFile {
 		return -1;
 }
 	
-	public int search(String sid, String cid, String yr) {
+	public int search(String sid, String cid) {
+		if (!targetadded) this.fillArray();
 		if (targetexists&&!targetempty) {
 			for(int j=0;j<this.target.size();j++) {
 				if ((String.valueOf(((StudentCourseGrade)(target.get(j))).getStudentId()).compareTo(sid)==0)
-						&&(String.valueOf(((StudentCourseGrade)(target.get(j))).getCourseId()).compareTo(cid)==0)
-						&&(String.valueOf(((StudentCourseGrade)(target.get(j))).getSemyr()).compareTo(yr)==0) ){
+						&&(String.valueOf(((StudentCourseGrade)(target.get(j))).getCourseId()).compareTo(cid)==0)){
 					return j;
 				}
 			}
@@ -253,35 +274,49 @@ public class SerializeFile {
 		else return -1;
 	}
 	
-	public ArrayList<StudentCourseGrade> searchAll(String sid, String semYr){
-		ArrayList<StudentCourseGrade> scg=new ArrayList<StudentCourseGrade>();
-		if (targetexists&&!targetempty) {
-			for(int j=0;j<this.target.size();j++) {
-				if ((String.valueOf(((StudentCourseGrade)(target.get(j))).getStudentId()).compareTo(sid)==0)
-						&&(String.valueOf(((StudentCourseGrade)(target.get(j))).getSemyr()).compareTo(semYr)==0) ){
-					scg.add((StudentCourseGrade) target.get(j));
-				}
-			}
-	}
-		return scg;}
 //----------------------------------------read one object from target----------------------------------------	
 	public Object read(String id,char mode) {
+		if (!targetadded) this.fillArray();
 		if (targetexists&&!targetempty) {
 			int count=this.search(id,mode);
-			return target.get(count);}
+			if (count==-1) return null;
+			else return target.get(count);}
 		else {
 			System.out.println("Target not availavle!");
 			return null;}
 		}
 	
-	public Object read(String sid,String cid,String yr) {
+	public Object read(String sid,String cid) {
+		if (!targetadded) this.fillArray();
 		if (targetexists&&!targetempty) {
-			int count=this.search(sid,cid,yr);
-			return target.get(count);}
+			int count=this.search(sid,cid);
+			if (count==-1) return null;
+			else return target.get(count);}
 		else {
 			System.out.println("Target not availavle!");
 			return null;}
 		}
+	
+	public ArrayList<StudentCourseGrade> readAll(String sid,char mode){
+		if (!targetadded) this.fillArray();
+		ArrayList<StudentCourseGrade> scg=new ArrayList<StudentCourseGrade>();
+		if (targetexists&&!targetempty) {
+			if (mode=='s') {
+				for(int j=0;j<this.target.size();j++) {
+					if ((String.valueOf(((StudentCourseGrade)(target.get(j))).getStudentId()).compareTo(sid)==0)){
+						scg.add((StudentCourseGrade) target.get(j));
+					}
+				}
+			}
+			else if (mode=='c') {
+				for(int j=0;j<this.target.size();j++) {
+					if ((String.valueOf(((StudentCourseGrade)(target.get(j))).getCourseId()).compareTo(sid)==0)){
+						scg.add((StudentCourseGrade) target.get(j));
+					}
+				}
+			}
+			}
+		return scg;}
 //----------------------------------------write target to file----------------------------------------			
 	public void writeArray() {
 		ObjectOutputStream out;
